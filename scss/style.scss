@@ -1,0 +1,796 @@
+@import "reset";
+@import "preset";
+
+/* Global */
+
+body {
+  background: $primary-color;
+  overflow-x: hidden;
+}
+
+.wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+// Follow Cursor
+#follow-cursor {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  display: block;
+  border-radius: 50%;
+  z-index: -1;
+  @include laptop {
+    display: none;
+  }
+}
+
+#progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 5px;
+  background: linear-gradient(to left, $secondary-color, $tertiary-color);
+  z-index: 50;
+  pointer-events: none;
+}
+
+// Navigation
+
+// Navigation
+.topnav {
+  position: relative;
+  top: 100px;
+  z-index: 999;
+  right: 0;
+  width: 100%;
+
+  @include tablet {
+    top: 0;
+    position: relative;
+    padding: 20px;
+  }
+
+  ul {
+    z-index: 2;
+    width: 100%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+
+    @include tablet {
+      display: none;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.8);
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    li {
+      margin: 0 35px 0 0;
+
+      @include tablet {
+        margin: 10px 0;
+      }
+      a {
+        color: $white;
+        position: relative;
+        font-size: 22px;
+        @include tablet {
+          font-size: 30px;
+        }
+        &:hover {
+          color: $secondary-color;
+          &::before {
+            width: 50%;
+          }
+          &::after {
+            width: 50%;
+          }
+        }
+        &::after {
+          content: "";
+          width: 0;
+          transition: all 0.3s linear;
+          display: block;
+          position: absolute;
+          bottom: -5px;
+          right: 0;
+          background: $secondary-color;
+          height: 2px;
+        }
+        &::before {
+          content: "";
+          width: 0;
+          transition: all 0.3s linear;
+          display: block;
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          background: $tertiary-color;
+          height: 2px;
+        }
+      }
+    }
+  }
+
+  .open-menu {
+    color: #000;
+    font-size: 35px;
+    position: absolute;
+    top: 34px;
+    right: 30px;
+    display: none;
+
+    @include tablet {
+      display: block;
+      position: relative;
+      top: 0;
+      right: 0;
+      text-align: center;
+    }
+  }
+
+  .close-menu {
+    color: #fff;
+    font-size: 35px;
+    position: absolute;
+    top: 34px;
+    right: 30px;
+    display: none;
+    z-index: 999;
+
+    @include laptop {
+      display: none;
+    }
+  }
+}
+// Banner
+
+#banner {
+  padding: 0 25px;
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+
+    @include tablet {
+      justify-content: center;
+      min-height: 0;
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      @include button-template;
+    }
+
+    .circle-element1 {
+      @include circle-element-grey;
+      width: 500px;
+      height: 500px;
+      position: absolute;
+      bottom: 3%;
+      left: 35%;
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    .circle-group1 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include mobile {
+        display: none;
+      }
+      .circle-element2 {
+        @include circle-element-green;
+        width: 300px;
+        height: 300px;
+      }
+
+      .circle-element3 {
+        @include circle-element-green;
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .hero {
+      width: 50vw;
+      position: relative;
+
+      @include tablet {
+        width: 100%;
+      }
+
+      &::before {
+        content: "";
+        width: 100px;
+        height: 10px;
+        background: $grey;
+        position: absolute;
+        bottom: 0;
+        left: -38px;
+        transform: rotate(30deg);
+      }
+      &::after {
+        content: "";
+        width: 100px;
+        height: 10px;
+        background: $grey;
+        position: absolute;
+        top: 0;
+        right: -38px;
+        transform: rotate(30deg);
+      }
+      figcaption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 2;
+        padding: 40px;
+        h2 {
+          font-family: $primary-font;
+          color: $white;
+          font-size: 4rem;
+          line-height: 100%;
+          font-weight: bold;
+          span {
+            display: block;
+          }
+          small {
+            display: block;
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+
+    .banner-info {
+      width: 50vw;
+      padding: 40px 50px;
+      text-align: left;
+      position: relative;
+
+      @include tablet {
+        width: 100%;
+        text-align: center;
+      }
+      .line1 {
+        width: 400px;
+        height: 10px;
+        display: block;
+        background: $grey;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        @include mobile {
+          display: none;
+        }
+      }
+      .line2 {
+        width: 200px;
+        height: 10px;
+        display: block;
+        background: $secondary-color;
+        position: absolute;
+        bottom: -30px;
+        right: 0;
+        @include mobile {
+          display: none;
+        }
+      }
+      h2 {
+        color: $white;
+        font-size: 6rem;
+        line-height: 100%;
+        font-weight: bold;
+        font-family: $primary-font;
+
+        @include laptop {
+          font-size: 4rem;
+        }
+        @include tablet {
+          font-size: 6rem;
+        }
+        @include mobile {
+          font-size: 4rem;
+        }
+        span {
+          display: block;
+          color: $secondary-color;
+        }
+      }
+
+      ul.social-media {
+        display: flex;
+        justify-content: flex-start;
+        margin: 0 20px 0 0;
+        @include tablet {
+          justify-content: center;
+          margin: 0;
+        }
+        li {
+          @include tablet {
+            margin: 0 20px;
+          }
+          a {
+            font-size: 40px;
+            margin: 0 20px 0 0;
+            background: linear-gradient(
+              to left,
+              $secondary-color,
+              $tertiary-color
+            );
+            background-clip: text;
+            color: transparent;
+            position: relative;
+
+            @include tablet {
+              margin: 0;
+              color: #fff;
+            }
+
+            &:hover {
+              color: $secondary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// About Me
+
+#about-me {
+  position: relative;
+  padding: 0 25px;
+  .circle-group2 {
+    .circle-element4 {
+      @include circle-element-green;
+      width: 300px;
+      height: 300px;
+      position: absolute;
+    }
+    .circle-element5 {
+      @include circle-element-green;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+    }
+  }
+  .circle-element6 {
+    @include circle-element-grey;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    position: absolute;
+
+    @include mobile {
+      display: none;
+    }
+  }
+  .wrapper {
+    @include section-full;
+
+    .about-con {
+      width: 100%;
+      justify-content: space-between;
+      display: flex;
+      align-items: center;
+
+      @include tablet {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .my-image {
+        width: 50%;
+        order: 2;
+        margin-left: 30px;
+        position: relative;
+
+        @include tablet {
+          width: 600px;
+          order: 1;
+          margin-left: 0;
+          max-width: 100%;
+          margin-bottom: 50px;
+        }
+        &::before {
+          content: "";
+          width: 100px;
+          height: 10px;
+          background: $grey;
+          position: absolute;
+          bottom: 0;
+          right: -38px;
+          transform: rotate(-30deg);
+        }
+        &::after {
+          content: "";
+          width: 100px;
+          height: 10px;
+          background: $grey;
+          position: absolute;
+          top: 0;
+          left: -38px;
+          transform: rotate(-30deg);
+        }
+      }
+      .about-info {
+        width: 50%;
+        order: 1;
+
+        @include tablet {
+          width: 100%;
+          order: 2;
+        }
+
+        h2 {
+          @include heading-template;
+          text-align: left;
+
+          @include tablet {
+            text-align: center;
+          }
+          @include mobile {
+            font-size: 3rem;
+          }
+        }
+        p {
+          color: $white;
+
+          line-height: 30px;
+          margin: 0 0 30px;
+          text-align: justify;
+        }
+      }
+    }
+  }
+}
+
+// Projects
+
+#projects {
+  padding: 0 25px;
+
+  .circle-group2 {
+    @include mobile {
+      display: none;
+    }
+    .circle-element4 {
+      @include circle-element-green;
+      width: 300px;
+      height: 300px;
+      position: absolute;
+    }
+    .circle-element5 {
+      @include circle-element-green;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      left: 300px;
+    }
+
+    .circle-element6 {
+      @include circle-element-grey;
+      width: 200px;
+      height: 200px;
+      right: 0;
+      position: absolute;
+    }
+  }
+
+  .wrapper {
+    @include section-full;
+
+    @include tablet {
+      flex-direction: revert;
+    }
+    .content {
+      text-align: center;
+      margin: 0 0 30px;
+      width: 100%;
+      h2 {
+        @include heading-template;
+        text-align: center;
+
+        @include mobile {
+          font-size: 3rem;
+        }
+      }
+      p {
+        color: $white;
+        line-height: 25px;
+        font-size: 17px;
+      }
+    }
+    #recent-projects {
+      padding: 20px 0;
+      width: 100%;
+      .flipster__button {
+        svg {
+          stroke: $tertiary-color !important;
+          color: $tertiary-color !important;
+          opacity: 1 !important;
+          fill: none !important;
+        }
+      }
+      ul {
+        li {
+          text-align: center;
+
+          figure {
+            width: 500px;
+            max-width: 100%;
+            height: 250px;
+            overflow: hidden;
+          }
+
+          .sub-content {
+            background: $white;
+            padding: 20px;
+            border-bottom: 10px solid $secondary-color;
+            transition: 0.5s;
+            h3 {
+              line-height: 100%;
+              color: $black;
+              font-size: 30px;
+              font-weight: bold;
+              margin: 20px 0;
+            }
+
+            a {
+              @include button-template;
+              margin: 0;
+            }
+          }
+        }
+        .flipster__item--current {
+          .sub-content {
+            border-bottom: 10px solid $black;
+            transition: 0.5s;
+          }
+        }
+      }
+    }
+  }
+}
+
+#contact-me {
+  padding: 0 25px;
+
+  .circle-group2 {
+    @include mobile {
+      display: none;
+    }
+    .circle-element4 {
+      @include circle-element-grey;
+      width: 600px;
+      height: 600px;
+      position: absolute;
+    }
+    .circle-element5 {
+      @include circle-element-green;
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      right: 0;
+      bottom: 80px;
+    }
+
+    .circle-element6 {
+      @include circle-element-green;
+      width: 400px;
+      height: 400px;
+      right: 0;
+      position: absolute;
+    }
+  }
+
+  .wrapper {
+    @include section-full;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    @include tablet {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .left-content {
+      width: 50%;
+      margin-right: 20px;
+      text-align: left;
+
+      @include tablet {
+        width: 100%;
+        margin-right: 0;
+        text-align: center;
+      }
+
+      h2 {
+        @include heading-template;
+        text-align: left;
+        margin: 0 0 20px;
+
+        @include break-1100 {
+          font-size: 5rem;
+        }
+
+        @include tablet {
+          font-size: 5rem;
+          text-align: center;
+        }
+
+        @include mobile {
+          font-size: 3rem;
+        }
+      }
+      p {
+        color: $white;
+      }
+
+      ul {
+        margin: 30px 0 0;
+        li {
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 20px;
+          a {
+            color: $tertiary-color;
+            font-size: 30px;
+
+            &:hover {
+              color: $tertiary-color;
+            }
+          }
+        }
+      }
+    }
+    .right-content {
+      width: 50%;
+
+      @include tablet {
+        width: 100%;
+      }
+
+      form {
+        input[type="text"],
+        input[type="phone"],
+        input[type="email"],
+        textarea {
+          width: 100%;
+          background: transparent;
+          border: 1px solid $grey;
+          height: 50px;
+          margin-bottom: 20px;
+          color: $white;
+          font-family: $static-font;
+          padding: 10px;
+          font-size: 20px;
+        }
+
+        textarea {
+          height: 200px;
+        }
+
+        input[type="submit"] {
+          @include button-template;
+          border: 0;
+          padding: 0;
+          width: 400px;
+          margin: 0 auto;
+          height: 60px;
+          font-family: $primary-font;
+          letter-spacing: 3px;
+          font-size: 30px;
+          max-width: 100%;
+          &:hover {
+            background: $secondary-color;
+          }
+
+          @include tablet {
+            max-width: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background: $tertiary-color;
+  padding: 20px;
+
+  .wrapper {
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+
+      @include tablet {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      @include mobile {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .footer-nav {
+        display: flex;
+        justify-content: flex-start;
+        margin-right: 24px;
+
+        @include tablet {
+          margin-right: 0;
+          width: 100%;
+          justify-content: center;
+        }
+
+        @include mobile {
+          justify-content: center;
+          margin-right: 0;
+          flex-wrap: wrap;
+        }
+        li {
+          margin-right: 20px;
+          @include tablet {
+            margin-right: 10px;
+          }
+          @include mobile {
+            margin-right: 0;
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: center;
+          }
+          a {
+            color: $white;
+            font-size: 20px;
+
+            @include laptop {
+              font-size: 17px;
+            }
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      .copyright {
+        color: #fff;
+        font-size: 20px;
+
+        @include laptop {
+          font-size: 17px;
+        }
+        @include tablet {
+          margin: 20px 0;
+        }
+        @include mobile {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+}

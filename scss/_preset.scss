@@ -1,0 +1,111 @@
+@import "declarations";
+
+/*preset*/
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: $text-font-size;
+    line-height: 22px;
+    font-family: $static-font;
+    color: $light-black;
+    position: relative;
+    width: 1920px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+body.active {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    position: fixed !important;
+    top: auto !important;
+}
+
+a {
+    text-decoration: none;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+p{
+	line-height: 100%;	
+}
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+    image-rendering: -webkit-optimize-contrast;
+    height: auto;
+}
+
+textarea {
+    resize: vertical;
+}
+
+iframe {
+    border: none;
+    width: 100%;
+}
+
+ul,
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+strong,
+b {
+    font-weight: bold;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+b 
+/* Forms Presets */
+::-webkit-input-placeholder {
+    opacity: 1;
+    color: inherit;
+}
+
+::-moz-placeholder {
+    opacity: 1;
+    color: inherit;
+}
+
+:-ms-input-placeholder {
+    opacity: 1;
+    color: inherit;
+}
+
+:-moz-placeholder {
+    opacity: 1;
+    color: inherit;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.clearfix {
+    clear: both;
+    overflow: hidden;
+}
+
+/*end preset*/

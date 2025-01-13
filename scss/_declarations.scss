@@ -1,0 +1,306 @@
+/* SASS Declerations */
+
+// Font Size
+$heading-font-size: 40px;
+$sub-heading-font-size: 30px;
+$text-font-size: 16px;
+$button-font-size: 20px;
+// ### how to use ### //
+// font-family: $heading-size;
+
+// Font Family
+$static-font: "Poppins", sans-serif;
+$primary-font: "Roboto Condensed", sans-serif;
+$secondary-font: arial, sans-serif;
+$tertiary-font: Helvetica, sans-serif;
+// ### how to use ### //
+// font-family: $primary-font;
+
+// For Color
+$primary-color: #222629;
+$secondary-color: #86c232;
+$tertiary-color: #61892f;
+// ### how to use ### //
+// color: $primary-color;
+
+// Default Color
+$black: #000;
+$white: #fff;
+$grey: #6b6e70;
+$light-black: #333;
+$ie-color: #00abdd;
+// ### how to use ### //
+// color: $black;
+
+// Web Colors
+$text-color: #000;
+$h1-color: #000;
+$h2-color: #000;
+$h3-color: #000;
+$h4-color: #000;
+$h5-color: #000;
+$h6-color: #000;
+$link-color: #000;
+$button-color: #000;
+// ### how to use ### //
+// color: $text-color;
+
+// Pageturner Colors
+$pageturner-primary-color: #e89e00;
+$pageturner-secondary-color: #e9ae00;
+// ### how to use ### //
+// color: pageturner-primary-color;
+
+// Breakpoints
+$desktop-breakpoint: 1680px;
+$laptop-breakpoint: 1024px;
+$tablet-breakpoint: 768px;
+$mobile-breakpoint: 480px;
+$window-height-breakpoint: 800px;
+// ### how to use ### //
+// @media only screen and (max-width:$desktop-breakpoint){ // css }
+
+// Font Weight
+$font-weights: (
+  "thin": 100,
+  "extra-light": 200,
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "semi-bold": 600,
+  "bold": 700,
+  "extra-bold": 800,
+  "black": 900,
+);
+// ### how to use ### //
+// font-weight: map-get($font-weights, bold);
+
+// Mixin
+@mixin btn-hover {
+  text-decoration: none;
+  background: #fff;
+  color: #333;
+}
+// ### how to use ### //
+// .class{ @include btn-hover; }
+
+@mixin flex-center($direction) {
+  display: flex;
+  justify-content: $direction;
+  align-items: center;
+}
+// ### how to use ### //
+// .class{ @include flex-center(space-around); }
+
+@mixin full-width {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 100%;
+}
+// ### how to use ### //
+// .class{ @include full-width; }
+
+// Positioning
+
+@mixin center-image {
+  margin: 0 auto;
+  text-align: center;
+}
+// ### how to use ### //
+// .class{ @include center-image; }
+
+@mixin center-x-y {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+// ### how to use ### //
+// .class{ @include center-x-y; }
+
+@mixin center-x($position) {
+  position: $position;
+  left: 50%;
+  transform: translatex(-50%);
+}
+// ### how to use ### //
+// .class{ @include center-x(relative); }
+
+@mixin fixed-section($position) {
+  position: $position;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+// ### how to use ### //
+// .class{ @include fixed-section(relative); }
+
+// Responsive Height
+// ### how to use ### //
+// .class{ @include desktop{ //css }; }
+
+@mixin window-height {
+  @media (max-height: $window-height-breakpoint) {
+    @content;
+  }
+}
+
+// Custom Breakpoint
+@mixin break-1400 {
+  @media (max-width: 1400px) {
+    @content;
+  }
+}
+@mixin break-1300 {
+  @media (max-width: 1300px) {
+    @content;
+  }
+}
+@mixin break-1200 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+@mixin break-1100 {
+  @media (max-width: 1100px) {
+    @content;
+  }
+}
+
+// Responsive Width
+@mixin desktop {
+  @media (max-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: $laptop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin parent-spacing {
+  padding: 0 25px;
+}
+
+/* Remove Animations */
+@mixin remove-animation {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  -webkit-animation: none !important;
+  -webkit-transition: none !important;
+  -webkit-transform: none !important;
+  -webkit-opacity: 1 !important;
+}
+
+// Section Display
+@mixin section-full {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+// Preloader
+
+$thickness: 5px;
+$duration: 2500;
+$delay: $duration/6;
+
+@mixin polka($size, $dot, $base, $accent) {
+  background: $base;
+  background-image: radial-gradient($accent $dot, transparent 0);
+  background-size: $size $size;
+  background-position: 0 -2.5px;
+}
+
+@mixin circle-element-green {
+  background: $secondary-color;
+  opacity: 0.2;
+  border-radius: 50%;
+  display: block;
+}
+@mixin circle-element-grey {
+  background: $grey;
+  opacity: 0.2;
+  border-radius: 50%;
+  display: block;
+}
+
+@mixin button-template {
+  background: linear-gradient(to left, $secondary-color, $tertiary-color);
+  color: $white;
+  height: auto;
+  display: inline-block;
+  padding: 20px 30px;
+  width: auto;
+  font-size: 20px;
+  position: relative;
+  margin: 30px 0;
+  overflow: hidden;
+
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: $white;
+    display: block;
+    position: absolute;
+    transition: all .3s linear;
+    bottom: 0;
+    left: -100%;
+
+  }
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background: $white;
+    display: block;
+    position: absolute;
+    top: 0;
+    transition: all .3s linear;
+    right: -100%;
+  }
+
+  &:hover{
+    &::before{
+        transition: all .3s linear;
+        left:100%;
+    } 
+    &::after{
+        transition: all .3s linear;
+        right:100%;
+    }
+  }
+}
+
+
+@mixin heading-template{
+  font-size: 7rem;
+  color: $white;
+  line-height: 100%;
+  font-family: $primary-font;
+  margin: 0 0 40px;
+  text-align: right;
+}
